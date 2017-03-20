@@ -59,7 +59,6 @@ def threashold_find_sample(y_true, rate_learning, all_vectors):
         all_vectors = all_vectors[number_extra_vectors:]
         sample_size += 1
 
-
 def sigma_all(y_true, rate_learning, sample_learn):
     print("Sigma. Sample is all")
     neural_sigma = Sigma(y_true, rate_learning, 4)
