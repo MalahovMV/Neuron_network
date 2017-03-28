@@ -4,7 +4,10 @@ class Window:
         self.y_true = y_true
         self.rate_learning = rate_learning
         self.epochs = 0
-        self.weight = [0, 0, 0, 0]
+        self.weight = []
+        for i in range(size_window):
+            self.weight.append(0)
+
         self.error_on_last_epochs = 0
         self.size_window = size_window
         self.vector_ans_on_epoch = []

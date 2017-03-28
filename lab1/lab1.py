@@ -15,7 +15,7 @@ def threashold_all(y_true, rate_learning, sample_learn):
     last_weight = []
     neural_treashold.choose_sample(sample_learn)
     while (error_on_step) and (neural_treashold.epochs < 100) and (last_weight != neural_treashold.weight):
-        print("Epochs=", neural_treashold.epochs)
+        print("Epoch=", neural_treashold.epochs)
         print('W=', end='')
         print_weights(neural_treashold.weight)
         last_weight = neural_treashold.weight[:]
@@ -66,7 +66,7 @@ def sigma_all(y_true, rate_learning, sample_learn):
     last_weight = []
     neural_sigma.choose_sample(sample_learn)
     while (error_on_step) and (neural_sigma.epochs < 100) and (last_weight != neural_sigma.weight):
-        print("Epochs=", neural_sigma.epochs)
+        print("Epoch=", neural_sigma.epochs)
         print('W=', end='')
         print_weights(neural_sigma.weight)
         last_weight = neural_sigma.weight[:]
@@ -113,19 +113,18 @@ def sigma_find_sample(y_true, rate_learning, all_vectors):
 
 
 def main():
-    rate_learning = 0.3
+    rate_learning = 1
     y_true = [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
-    #y_true = [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
     sample_learn = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     all_vectors = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15]]
     threashold_all(y_true, rate_learning, sample_learn)
     threashold_sample = threashold_find_sample(y_true, rate_learning, all_vectors[:])
-    #print('Learning at new sample')
-    #threashold_all(y_true, rate_learning, threashold_sample)
+    print('Learning at new sample')
+    threashold_all(y_true, rate_learning, threashold_sample)
     sigma_all(y_true, rate_learning, sample_learn)
     sigma_sample = sigma_find_sample(y_true, rate_learning, all_vectors[:])
-    #print('Learning at new sample')
-    #sigma_all(y_true, rate_learning, sigma_sample)
+    print('Learning at new sample')
+    sigma_all(y_true, rate_learning, sigma_sample)
 
 if __name__ == '__main__':
     main()

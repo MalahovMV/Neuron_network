@@ -1,5 +1,5 @@
 import math
-from matplotlib import mlab, pyplot
+from matplotlib import pyplot
 from Window import Window
 import random
 
@@ -17,7 +17,7 @@ def function(a, b, N):
 def find_rate_learning(y_true, size_window):
     good_rate = 0
     min_epochs = 3000
-    for i in range(100):
+    for i in range(1000):
         rate = random.random()
         neuron = Window(1, y_true[:20], size_window)
         error = 1
@@ -31,12 +31,12 @@ def find_rate_learning(y_true, size_window):
 
     print(good_rate, min_epochs)
 
-def main():
+def main(size_window = 4):
     a = -1
     b = 0.5
     N = 20
     step = (b - a) / N
-    size_window = 4
+    size_window = size_window
     input_vectors, y_true = function(a, b, N)
     neuron = Window(1, y_true[:20], size_window)
     error = 1
@@ -62,7 +62,18 @@ def build_map(xlist, ylist, x_probality, y_probality):
     pyplot.savefig('123.png')
     pyplot.show()
 
+def test_size_window():
+    for i in range(3,17):
+        print(i)
+        try:
+            main(i)
+
+        except:
+            print("Learning is impossible")
+
+        print()
+
 if __name__ == '__main__':
     main()
-
+    test_size_window()
 
