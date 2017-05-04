@@ -23,7 +23,7 @@ class Hopfild:
 
         return True
 
-    def __init__(self, letter1=[], letter2=[], letter3=[]):
+    def __init__(self, letter1, letter2, letter3):
         self.letter1 = np.array([letter1[:]])
         self.letter2 = np.array([letter2[:]])
         self.letter3 = np.array([letter3[:]])
