@@ -1,9 +1,6 @@
 from neuron import Hopfild
 
-def main(lis_letter):
-    letter1 = [1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1]
-    letter2 = [1, 1, 1, 1, -1, -1, 1, -1, -1, 1, -1, -1, 1, 1, 1]
-    letter3 = [1, 1, 1, -1, 1, -1, -1, 1, -1, -1, 1, -1, 1, 1, 1]
+def main(letter1, letter2, letter3):
     neuron = Hopfild(letter1, letter2, letter3)
     i = 0
     while True:
@@ -15,9 +12,14 @@ def main(lis_letter):
 
         if i > 100: break
 
-    print()
-    for el in list_letter:
-        from_massiv_to_letter(el, neuron.indification_letter(el))
+    worker = input('Press any key')
+    while worker:
+        print()
+        List_letter = read_data('Letter')
+        for el in List_letter:
+            from_massiv_to_letter(el, neuron.indification_letter(el))
+
+        worker = input('Press any key')
 
 def read_data(file='Letter'):
     f = open(file, 'r')
@@ -30,7 +32,6 @@ def read_data(file='Letter'):
             s = f.readline()
             list_letter.append(chek_letter)
             chek_letter = []
-            print(list_letter)
             continue
 
         s = f.readline()
@@ -94,7 +95,9 @@ def from_massiv_to_letter(letter_vector1, letter_vector2):
 
                 print()
 
+        print()
+
 if __name__ == '__main__':
     #chek_letter = [-1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, 1, 1]
-    list_letter = read_data()
-    main(list_letter)
+    List_example = read_data('Example')
+    main(*List_example)
